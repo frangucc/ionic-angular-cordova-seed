@@ -1,9 +1,20 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ["firebase"])
 
-.controller('AppCtrl', function($scope) {
-  // Main app controller, empty for the example
+
+.controller('AppCtrl', function($scope, $firebase) {
+  var ref = new Firebase("https://aupb944wv7q.firebaseio-demo.com/");
+  $scope.messages = $firebase(ref);
+  $scope.addMessage = function(e){
+    if (e.keyCode != 13) return;
+    $scope.messages.$add({from: $scope.name, body: $scope.msg});
+    $scope.msg = "";
+  }
+  $scope.update = function(message) {
+    //FRANK TODO: Button or Enter, collision happening somewhere - test
+    $scope.messages.$add({from: $scope.name, body: $scope.msg});
+    $scope.msg = "";
+  };
 })
-
 // A simple controller that fetches a list of data
 .controller('PetsTabCtrl', function($scope, Pets) {
   // "Pets" is a service returning mock data (services.js)
