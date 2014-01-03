@@ -15,6 +15,20 @@ angular.module('starter.controllers', ["firebase"])
     $scope.msg = "";
   };
 })
+
+// A simple controller that shows a tapped item's data
+.controller('ProjectCtrl', function($scope, Projects) {
+  $scope.onRefresh = function() {
+    // Load content
+    Users.load().then(function(users) {
+      $scope.users = users;
+
+      // Trigger refresh complete on the pull to refresh action
+      $scope.$broadcast('scroll.refreshComplete');
+    });
+  };
+})
+
 // A simple controller that fetches a list of data
 .controller('PetsTabCtrl', function($scope, Pets) {
   // "Pets" is a service returning mock data (services.js)
@@ -28,8 +42,13 @@ angular.module('starter.controllers', ["firebase"])
   });
 })
 
+
 // A simple controller that shows a tapped item's data
 .controller('PetCtrl', function($scope, $routeParams, Pets) {
   // "Pets" is a service returning mock data (services.js)
   $scope.pet = Pets.get($routeParams.petId);
 });
+
+
+
+

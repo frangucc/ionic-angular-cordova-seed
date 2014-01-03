@@ -1,3 +1,19 @@
+// START - Thinkster-firebase-tutorial app.js
+'use strict';
+
+// Declare app level module which depends on filters, and services
+var app = angular.module('fantasyApp',
+  [ 'fantasyApp.config'
+  , 'fantasyApp.controllers.header'
+  , 'fantasyApp.controllers.signin'
+  , 'fantasyApp.controllers.signup'
+  , 'firebase', 'ui.bootstrap', 'ngRoute']
+  )
+
+// END - Thinkster-firebase-tutorial app.js
+
+// TODO : FRANK, Fix syntax below to match above or deprectate the start app. 
+
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array or 'requires'
@@ -10,12 +26,18 @@ angular.module('starter', ['ionic', 'ngRoute', 'ngAnimate', 'starter.services', 
   $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
 })
 
+// TODO: FRANK, Kill these routes and put them in the config or in a routes.js file 
 .config(function($routeProvider, $locationProvider) {
 
   // Set up the initial routes that our app will respond to.
   // These are then tied up to our nav router which animates and
   // updates a navigation bar
-  $routeProvider.when('/home', {
+  $routeProvider.when('/project', {
+    templateUrl: 'templates/projects.html',
+    controller: 'ProjectCtrl'
+  });
+
+    $routeProvider.when('/home', {
     templateUrl: 'templates/app.html',
     controller: 'AppCtrl'
   });
@@ -26,6 +48,8 @@ angular.module('starter', ['ionic', 'ngRoute', 'ngAnimate', 'starter.services', 
     templateUrl: 'templates/pet.html',
     controller: 'PetCtrl'
   });
+
+
 
   // if none of the above routes are met, use this fallback
   // which executes the 'AppCtrl' controller (controllers.js)
