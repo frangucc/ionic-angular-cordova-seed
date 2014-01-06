@@ -7,6 +7,7 @@ var app = angular.module('fantasyApp',
   , 'fantasyApp.controllers.header'
   , 'fantasyApp.controllers.signin'
   , 'fantasyApp.controllers.signup'
+  , 'fantasyApp.controllers.todos'
   , 'firebase', 'ui.bootstrap', 'ngRoute']
   )
 
@@ -57,5 +58,14 @@ angular.module('starter', ['ionic', 'ngRoute', 'ngAnimate', 'starter.services', 
     redirectTo: '/home'
   });
 
+  $routeProvider.when('/index_todos', {
+    redirectTo: '/index_todos.html',
+    controller: 'TodoCtrl'
+  });
+
+
 });
 
+// ######################################################################################
+// TODO: FRANK: From the Nitrious.io ionic todo list - merge this shit properly with the above code
+// ######################################################################################
